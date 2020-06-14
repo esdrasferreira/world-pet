@@ -5,13 +5,10 @@ import com.world.model.Usuario;
 import com.world.repository.PetRepository;
 import com.world.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 @Controller
@@ -28,6 +25,7 @@ public class PetController{
     public ModelAndView listar(ModelAndView mv){
         Iterable<Pet> pets = petRepository.findAll();
         mv.addObject("pets",pets);
+        mv.setViewName("pets/list");
         return mv;
     }
 
@@ -35,15 +33,21 @@ public class PetController{
     public ModelAndView cadastrar(ModelAndView mv){
         Iterable<Usuario> usuarios = usuarioRepository.findAll();
         mv.addObject("usuarios", usuarios);
-        mv.setViewName("formPet");
+        mv.addObject("pet", new Pet());
+        mv.setViewName("pets/form");
         return mv;
     }
 
+    @SuppressWarnings("OptionalGetWithoutIsPresent")
     @GetMapping("editar/{id}")
     public ModelAndView editar(ModelAndView mv, @PathVariable Long id){
         Optional<Pet> pet = petRepository.findById(id);
         mv.addObject("pet",pet.get());
-        mv.setViewName("formPet");
+
+        Iterable<Usuario> usuarios = usuarioRepository.findAll();
+        mv.addObject("usuarios", usuarios);
+
+        mv.setViewName("pets/form");
         return mv;
     }
 

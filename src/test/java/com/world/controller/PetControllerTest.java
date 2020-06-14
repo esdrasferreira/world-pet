@@ -11,6 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+
 @WebMvcTest(PetController.class)
 public class PetControllerTest {
 
@@ -22,9 +23,11 @@ public class PetControllerTest {
     @MockBean
     private UsuarioRepository usuarioRepository;
 
+
+
     @Test
     @DisplayName("Devem existir Pets cadastrados ao executar o teste")
-    void devem_existirPets() throws Exception{
+   public void devem_existirPets() throws Exception{
         mockMvc.perform(MockMvcRequestBuilders.get("/pets"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.forwardedUrl("/WEB-INF/views/pets.jsp"));
@@ -32,7 +35,7 @@ public class PetControllerTest {
 
     @Test
     @DisplayName("Devem existir o formulario de Pets para cadastrar")
-    void deve_retornar_oFormulario_paraCadastro_eAtualizacao() throws Exception {
+    public void deve_retornar_oFormulario_paraCadastro_eAtualizacao() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/pets/cadastrar"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -41,8 +44,7 @@ public class PetControllerTest {
 
     @Test
     @DisplayName("Devem inserir um Pet ao salvar o formulario")
-    void deve_inserir_umPet_noCadastro_doFormulario() throws Exception {
-
+    public void deve_inserir_umPet_noCadastro_doFormulario() throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders.post("/pets/salvar")
                         .param("id", "0")
@@ -51,12 +53,11 @@ public class PetControllerTest {
                         .param("raca", "PitBull")
                         .param("sexo", "masculino")
                         .param("tipo", "cachorro")
-                        .param("usuario", "1")
-
+                        .param("usuario_id", "1")
         )
                 .andExpect(MockMvcResultMatchers.status().is(302))
                 .andExpect(MockMvcResultMatchers.redirectedUrl("/pets"));
-
     }
+
 
 }
