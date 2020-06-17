@@ -1,31 +1,35 @@
 package com.world.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
+@Getter@Setter
 @Data@AllArgsConstructor
 @NoArgsConstructor
 @Table("pet")
 public class Pet {
 
     @Id
-    private Long id;
+    private Integer id;
     private String nome;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate idade;
     private String raca;
-    private String sexo;
+    @Enumerated(EnumType.STRING)
+    private SexoPet sexo;
     private String tipo;
+    @Enumerated(EnumType.STRING)
+    private StatusAdocao status;
 
     @MappedCollection(idColumn = "pet_id", keyColumn = "usuario_id")
     private Map<Long, UsuarioPet> usuariosPet;

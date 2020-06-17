@@ -1,5 +1,6 @@
 package com.world.controller;
 
+import com.world.model.Endereco;
 import com.world.model.Usuario;
 import com.world.repository.PetRepository;
 import com.world.repository.UsuarioRepository;
@@ -30,12 +31,13 @@ public class UsuarioController {
 
     @GetMapping("/cadastrar")
     public ModelAndView cadastrar(ModelAndView mv){
-        mv.addObject("usuario", new Usuario());
+         mv.addObject("usuario", new Usuario());
+        mv.addObject("endereco", new Endereco());
         mv.setViewName("usuarios/form");
         return mv;
     }
 
-    @SuppressWarnings("OptionalGetWithoutIsPresent")
+
     @GetMapping("editar/{id}")
     public ModelAndView editar(ModelAndView mv, @PathVariable Long id){
         Optional<Usuario> usuario = usuarioRepository.findById(id);
@@ -46,7 +48,9 @@ public class UsuarioController {
     }
 
     @PostMapping("/salvar")
-    public ModelAndView salvar(@ModelAttribute Usuario usuario){
+    public ModelAndView salvar(@ModelAttribute Usuario usuario, @ModelAttribute Endereco endereco){
+
+
         usuarioRepository.save(usuario);
         return new ModelAndView("redirect:/usuarios");
     }

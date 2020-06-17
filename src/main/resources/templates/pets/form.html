@@ -13,22 +13,27 @@
 <body class="p-3 mb-2 bg-secondary">
 <!-- Just an image -->
 <nav class="navbar navbar-dark bg-dark">
-    <ul class="nav justify-content-left">
-        <li class="nav-item">
-            <a class="nav-link active" href="/pets">Pets</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/pets/cadastrar">Pets-cadastro</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="/usuarios">Usuários</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/usuarios/cadastrar">Cadastro-usuários</a>
-        </li>
-    </ul>
 
-</nav>
+        <ul class="nav justify-content-left">
+            <li class="nav-item">
+                <a class="nav-link active" href="/pets/meus_pets">Meus_Pets</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/pets">List_Pets</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/pets/cadastrar">Cadastro_Pets</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link active" href="/usuarios">Usuários</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/usuarios/cadastrar">Cadastro-usuários</a>
+            </li>
+        </ul>
+
+    </nav>
 <div class="container">
     <form action="#" method="post" th:action="@{/pets/salvar}" th:object="${pet}">
         <input type="hidden" th:field="*{id}">
@@ -74,11 +79,11 @@
                 <legend class="col-form-label col-sm-2 pt-0">Sexo:</legend>
                 <div class="col-auto">
                     <div class="form-check">
-                        <label for="masculino"></label><input class="form-check-input" type="radio" th:field="*{sexo}" id="masculino" value="masculino"> Masculino
+                        <label for="masculino"></label><input class="form-check-input" type="radio" th:field="*{sexo}" id="masculino" value="MASCULINO"> Masc
 
                     </div>
                     <div class="form-check">
-                        <label for="feminino"></label><input class="form-check-input" type="radio" th:field="*{sexo}" id="feminino" value="feminino"> Feminino
+                        <label for="feminino"></label><input class="form-check-input" type="radio" th:field="*{sexo}" id="feminino" value="FEMININO"> Fem
 
                     </div>
 

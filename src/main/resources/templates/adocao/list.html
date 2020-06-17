@@ -13,49 +13,54 @@
 <body class="p-3 mb-2 bg-secondary">
 <!-- Just an image -->
 <nav class="navbar navbar-dark bg-dark">
-    <nav class="navbar navbar-dark bg-dark">
-        <ul class="nav justify-content-left">
-            <li class="nav-item">
-                <a class="nav-link active" href="/pets/meus_pets">Meus_Pets</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="/pets">List_Pets</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/pets/cadastrar">Cadastro_Pets</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="/usuarios">Usuários</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/usuarios/cadastrar">Cadastro-usuários</a>
-            </li>
-        </ul>
+    <ul class="nav justify-content-left">
+        <nav class="navbar navbar-dark bg-dark">
+            <ul class="nav justify-content-left">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/pets/meus_pets">Meus_Pets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/pets">List_Pets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pets/cadastrar">Cadastro_Pets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/usuarios">Usuários</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/usuarios/cadastrar">Cadastro-usuários</a>
+                </li>
+            </ul>
+    </ul>
 
 </nav>
 <table class="table table-dark">
 
     <thead>
-    <tr>
+    <tr >
         <th  scope="col">id</th>
         <th  scope="col">nome</th>
         <th  scope="col">idade</th>
+        <th  scope="col">raça</th>
         <th  scope="col">sexo</th>
-        <th  scope="col">endereço</th>
+        <th  scope="col">tipo</th>
 
     </tr>
     </thead>
 
     <tbody>
 
-        <form method="get" action="/usuarios/editar/${usuario.id}">
-             <tr th:each="usuario: ${usuarios}">
-                <th th:text="${usuario.id}"></th>
-                <th th:text="${usuario.nome}"></th>
-                <th th:text="${usuario.idade}"></th>
-                <th th:text="${usuario.sexo}"></th>
-<!--                <th th:text="${usuario.endereco}"></th>-->
-                <td><a th:href="@{ /usuarios/editar/{id} (id=${{usuario.id}}) }" th:text="Editar"></a></td>
+        <form method="get" action="/pets/editar/${pet.id}">
+            <tr th:each="pet: ${pets}">
+                <th th:text="${pet.id}"></th>
+                <th th:text="${pet.nome}"></th>
+                <th th:text="${pet.idade}"></th>
+                <th th:text="${pet.raca}"></th>
+                <th th:text="${pet.sexo}"></th>
+                <th th:text="${pet.tipo}"></th>
+                <td><a th:href="@{ /pets/editar/{id} (id=${{pet.id}}) }" th:text="Editar"></a></td>
+                <td><a th:href="@{ /pets/excluir/{id} (id=${{pet.id}}) }" th:text="Excluir"></a></td>
             </tr>
         </form>
 
@@ -71,3 +76,4 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </html>
+

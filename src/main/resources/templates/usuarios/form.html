@@ -14,18 +14,23 @@
 <!-- Just an image -->
 <nav class="navbar navbar-dark bg-dark">
     <ul class="nav justify-content-left">
-        <li class="nav-item">
-            <a class="nav-link active" href="/pets">Pets</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/pets/cadastrar">Pets-cadastro</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="/usuarios">Usuários</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/usuarios/cadastrar">Cadastro-usuários</a>
-        </li>
+
+            <li class="nav-item">
+                <a class="nav-link active" href="/pets/meus_pets">Meus_Pets</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/pets">List_Pets</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/pets/cadastrar">Cadastro_Pets</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/usuarios">Usuários</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/usuarios/cadastrar">Cadastro-usuários</a>
+            </li>
+
     </ul>
 
 </nav>
@@ -54,25 +59,61 @@
                 <legend class="col-form-label col-sm-2 pt-0">Sexo:</legend>
                 <div class="col-auto">
                     <div class="form-check">
-                        <label for="masculino"></label><input type="radio" th:field="*{sexo}" id="masculino" value="masculino">Masculino
+                        <label for="masculino"></label><input type="radio" th:field="*{sexo}" id="MASCULINO" value="MASCULINO">MASCULINO
                     </div>
                     <div class="form-check">
-                        <label for="feminino"></label><input type="radio" th:field="*{sexo}" id="feminino" value="feminino">Feminino
+                        <label for="feminino"></label><input type="radio" th:field="*{sexo}" id="FEMININO" value="FEMININO">FEMININO
                     </div>
                     <div class="form-check disabled">
-                        <label for="duvida"></label><input type="radio" th:field="*{sexo}" id="duvida" value="duvida">Dúvida
+                        <label for="duvida"></label><input type="radio" th:field="*{sexo}" id="DUVIDA" value="DUVIDA">DUVIDA
                     </div>
                 </div>
             </div>
         </fieldset>
+        <div class="form-group row" th:object="${endereco}">
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Endereço:</label>
-            <div class="col-auto">
-                <label>
-                    <input type="text"  th:field="*{endereco}">
+
+            <div class="col-auto" >
+                <label class="col-form-label">Cep:
+                    <input type="text"  th:field="*{cep}">
                 </label>
             </div>
+
+            <div class="col-auto" >
+                <label class="col-form-label">Rua:
+                    <input type="text"  th:field="*{logradouro}">
+                </label>
+            </div>
+            <div class="col-auto" >
+                <label class="col-form-label">Número:
+                    <input type="text"  th:field="*{numero}">
+                </label>
+            </div>
+            <div class="col-auto" >
+                <label class="col-form-label">Complemento:
+                    <input type="text"  th:field="*{complemento}">
+                </label>
+            </div>
+
         </div>
+            <div class="col-auto" >
+                <label class="col-form-label">Bairro:
+                    <input type="text"  th:field="*{bairro}">
+                </label>
+            </div>
+            <div class="col-auto" >
+                <label class="col-form-label">Cidade:
+                    <input type="text"  th:field="*{cidade}">
+                </label>
+            </div>
+            <div class="col-auto" >
+                <label class="col-form-label">Estado:
+                    <input type="text"  th:field="*{estado}">
+                </label>
+            </div>
+
+        </div>
+
         <div class="form-group row">
             <div class="col-sm-10">
                 <button type="submit" class="btn btn-primary">Salvar</button>
