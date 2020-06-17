@@ -73,23 +73,6 @@
                 </label>
             </div>
         </div>
-
-        <fieldset class="form-group">
-            <div class="row">
-                <legend class="col-form-label col-sm-2 pt-0">Sexo:</legend>
-                <div class="col-auto">
-                    <div class="form-check">
-                        <label for="masculino"></label><input class="form-check-input" type="radio" th:field="*{sexo}" id="masculino" value="MASCULINO"> Masc
-
-                    </div>
-                    <div class="form-check">
-                        <label for="feminino"></label><input class="form-check-input" type="radio" th:field="*{sexo}" id="feminino" value="FEMININO"> Fem
-
-                    </div>
-
-                </div>
-            </div>
-        </fieldset>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Tipo:</label>
             <div class="col-auto">
@@ -98,6 +81,36 @@
                 </label>
             </div>
         </div>
+        <fieldset class="form-group">
+            <div class="container">
+                <div class="row">
+                    <div class="col-auto">
+                        <legend class="col-form-label col-sm-2 pt-0">Sexo:</legend>
+                    </div>
+                    <div class="col-auto">
+                        <label for="masculino"></label><input class="form-check-input" type="radio" th:field="*{sexo}" id="masculino" value="MASCULINO"> Masc
+                    </div>
+                    <div class="col-auto">
+                        <label for="feminino"></label><input class="form-check-input" type="radio" th:field="*{sexo}" id="feminino" value="FEMININO"> Fem
+                    </div>
+                </div>
+            </div>
+        </fieldset><fieldset class="form-group">
+        <div class="container">
+            <div class="row">
+                <div class="col-auto">
+                    <legend class="col-form-label col-sm-2 pt-0">Adoção:</legend>
+                </div>
+                <div class="col-auto">
+                  <input class="form-check-input" type="radio" th:field="*{status}"  value="DISPONIVEL"> Disponível
+                </div>
+                <div class="col-auto">
+                    <input class="form-check-input" type="radio" th:field="*{status}"  value="INDISPONIVEL"> Indisponível
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
         <div class="form-group row">
             <div class="col-sm-10">
                 <button type="submit" class="btn btn-primary">Salvar</button>

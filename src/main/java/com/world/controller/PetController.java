@@ -50,7 +50,7 @@ public class PetController{
         return mv;
     }
 
-    @SuppressWarnings("OptionalGetWithoutIsPresent")
+
     @GetMapping("editar/{id}")
     public ModelAndView editar(ModelAndView mv, @PathVariable Long id){
         Optional<Pet> pet = petRepository.findById(id);
@@ -67,6 +67,15 @@ public class PetController{
     public ModelAndView salvar(@RequestParam Long usuario_id, Pet pet){
         pet.addUsuario(usuario_id);
         petRepository.save(pet);
+        return new ModelAndView("redirect:/pets");
+    }
+
+    @GetMapping("excluir/{id}")
+    public ModelAndView excluir(ModelAndView mv, @PathVariable Integer id){
+    Pet pet = new Pet();
+    pet.setId(id);
+    petRepository.delete(pet);
+
         return new ModelAndView("redirect:/pets");
     }
 

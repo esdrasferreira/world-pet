@@ -42,6 +42,7 @@
         <th  scope="col">raça</th>
         <th  scope="col">sexo</th>
         <th  scope="col">tipo</th>
+        <th  scope="col">adoção</th>
 
     </tr>
     </thead>
@@ -56,6 +57,7 @@
                 <th th:text="${pet.raca}"></th>
                 <th th:text="${pet.sexo}"></th>
                 <th th:text="${pet.tipo}"></th>
+                <th th:text="${pet.status}"></th>
                 <td><a th:href="@{ /pets/editar/{id} (id=${{pet.id}}) }" th:text="Editar"></a></td>
                 <td><a th:href="@{ /pets/excluir/{id} (id=${{pet.id}}) }" th:text="Excluir"></a></td>
             </tr>
