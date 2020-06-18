@@ -6,8 +6,8 @@ DROP TABLE IF EXISTS  adocao;
 
 CREATE TABLE adocao(
                         `id` INT NOT NULL AUTO_INCREMENT,
-                        `id_pet` INT,
-                        `id_usuario` INT,
+                        `pet_id` INT,
+                        `usuario_id` INT,
                         `data_adocao` DATE,
                         `informacoes` VARCHAR(255) NULL,
                         PRIMARY KEY (`id`)

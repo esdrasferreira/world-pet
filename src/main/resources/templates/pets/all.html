@@ -43,6 +43,7 @@
         <th  scope="col">sexo</th>
         <th  scope="col">tipo</th>
         <th  scope="col">adoção</th>
+        <th  scope="col">dono</th>
         <th  scope="col">detalhes</th>
         <th  scope="col">adotar</th>
 
@@ -60,8 +61,9 @@
                 <th th:text="${pet.sexo}"></th>
                 <th th:text="${pet.tipo}"></th>
                 <th th:text="${pet.status}"></th>
+                <th >dono</th>
                 <td><a th:href="@{ /pets/detalhes/{id} (id=${{pet.id}}) }" th:text="Detalhes"></a></td>
-                <td><a class="btn btn-outline-primary" role="button" th:href="@{ /pets/adotar/{id} (id=${{pet.id}}) }" th:text="Adotar">Link</a></td>
+                <td><a class="btn btn-outline-primary" role="button" th:href="@{/adocao/cadastrar/{id} (id=${{pet.id}}) }" th:text="Adotar">Link</a></td>
             </tr>
         </form>
 
