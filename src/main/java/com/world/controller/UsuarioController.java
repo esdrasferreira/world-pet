@@ -41,9 +41,10 @@ public class UsuarioController {
     @GetMapping("editar/{id}")
     public ModelAndView editar(ModelAndView mv, @PathVariable Long id){
         Optional<Usuario> usuario = usuarioRepository.findById(id);
+
         mv.addObject("usuario",usuario.get());
 
-        mv.setViewName("usuarios/form");
+        mv.setViewName("usuarios/form_editar");
         return mv;
     }
 
@@ -52,6 +53,14 @@ public class UsuarioController {
 
 
         usuarioRepository.save(usuario);
+        return new ModelAndView("redirect:/usuarios");
+    }
+    @GetMapping("excluir/{id}")
+    public ModelAndView excluir(ModelAndView mv, @PathVariable Integer id){
+        Usuario usuario = new Usuario();
+        usuario.setId(id);
+        usuarioRepository.delete(usuario);
+
         return new ModelAndView("redirect:/usuarios");
     }
 

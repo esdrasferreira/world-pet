@@ -25,14 +25,13 @@ public class PetController{
     public ModelAndView listar(ModelAndView mv){
         Iterable<Pet> pets = petRepository.findAll();
         mv.addObject("pets",pets);
-        mv.setViewName("pets/list");
+        mv.setViewName("pets/all");
         return mv;
     }
 
-    @GetMapping("/meus_pets")
-    public ModelAndView listarPorDono(ModelAndView mv, @PathVariable Long id){
-        Optional<Usuario> usuario = usuarioRepository.findById(id);
 
+    @GetMapping("/meus_pets")
+    public ModelAndView meusPets(ModelAndView mv){
         Iterable<Pet> pets = petRepository.findAll();
         mv.addObject("pets",pets);
         mv.setViewName("pets/list");
