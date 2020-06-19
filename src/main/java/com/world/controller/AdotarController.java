@@ -80,6 +80,10 @@ public class AdotarController {
         adocao.setDataAdocao(LocalDate.now());
         adotarRepository.save(adocao);
 
+        Optional<Pet> petOptional = petRepository.findById(id);
+        Pet pet = petOptional.get();
+        pet.setStatus(StatusAdocao.INDISPONIVEL);
+        petRepository.save(pet);
 
         return new ModelAndView("redirect:/pets");
     }
