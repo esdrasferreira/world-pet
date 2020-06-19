@@ -12,5 +12,6 @@ import org.springframework.data.relational.core.mapping.Table;
 public class UsuarioPet {
 
 private Long usuarioId;
+private Long petId;
 
 }

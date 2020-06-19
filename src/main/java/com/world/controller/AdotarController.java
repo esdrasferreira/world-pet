@@ -1,10 +1,9 @@
 package com.world.controller;
 
-import com.world.model.Adocao;
-import com.world.model.Pet;
-import com.world.model.Usuario;
+import com.world.model.*;
 import com.world.repository.AdotarRepository;
 import com.world.repository.PetRepository;
+import com.world.repository.UsuarioPetRepository;
 import com.world.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +25,9 @@ public class AdotarController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private UsuarioPetRepository usuarioPetRepository;
 
 //    @GetMapping
 //    public ModelAndView listar(ModelAndView mv){
@@ -51,18 +53,29 @@ public class AdotarController {
         Iterable<Usuario> usuarios = usuarioRepository.findAll();
         mv.addObject("usuarios", usuarios);
 
+
+
+
         Optional<Pet> pet = petRepository.findById(id);
 
-        mv.addObject("pet", pet.get());
-        mv.setViewName("adocao/form");
-        return mv;
+
+
+        if(pet.get().getStatus() == StatusAdocao.INDISPONIVEL){
+            return new ModelAndView("redirect:/pets");
+        }else{
+            mv.addObject("pet", pet.get());
+            mv.setViewName("adocao/form");
+            return mv;
+        }
+
+
     }
 
     @PostMapping("/salvar")
-    public ModelAndView salvar(@RequestParam Integer usuario_id, Pet pet){
+    public ModelAndView salvar(@RequestParam Long usuario_id, Long id){
 
         Adocao adocao = new Adocao();
-        adocao.setPetId(pet.getId());
+        adocao.setPetId(id);
         adocao.setUsuarioId(usuario_id);
         adocao.setDataAdocao(LocalDate.now());
         adotarRepository.save(adocao);

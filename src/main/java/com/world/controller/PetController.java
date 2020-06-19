@@ -53,6 +53,8 @@ public class PetController{
     @GetMapping("editar/{id}")
     public ModelAndView editar(ModelAndView mv, @PathVariable Long id){
         Optional<Pet> pet = petRepository.findById(id);
+
+
         mv.addObject("pet",pet.get());
 
         Iterable<Usuario> usuarios = usuarioRepository.findAll();
@@ -70,7 +72,7 @@ public class PetController{
     }
 
     @GetMapping("excluir/{id}")
-    public ModelAndView excluir(ModelAndView mv, @PathVariable Integer id){
+    public ModelAndView excluir(ModelAndView mv, @PathVariable Long id){
     Pet pet = new Pet();
     pet.setId(id);
     petRepository.delete(pet);

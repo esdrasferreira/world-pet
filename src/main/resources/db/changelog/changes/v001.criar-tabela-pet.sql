@@ -10,7 +10,7 @@ create table pet(
                      idade date,
                      raca varchar (50),
                      sexo enum('masculino', 'feminino'),
-                     tipo varchar (100)
+                     tipo varchar (100) not null
 
 );
 

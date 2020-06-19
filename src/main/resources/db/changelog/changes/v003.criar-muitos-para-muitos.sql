@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `pet_world`.`pet` (
                                                  `raca` VARCHAR(45) NULL DEFAULT NULL,
                                                  `sexo` VARCHAR(45) NULL DEFAULT NULL,
                                                  `tipo` VARCHAR(45) NULL DEFAULT NULL,
-                                                 `status` VARCHAR(45) NULL DEFAULT NULL,
+                                                 `status` VARCHAR(45) NOT NULL,
                                                  PRIMARY KEY (`id`))
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = ascii;
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `pet_world`.`endereco`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `pet_world`.`usuarios_pets`
 (
-    usuario_id BIGINT,
-    pet_id     BIGINT
+    usuario_id BIGINT NOT NULL ,
+    pet_id     BIGINT NOT NULL
 )
 

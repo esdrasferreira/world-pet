@@ -16,9 +16,9 @@ import java.time.LocalDate;
 public class Adocao {
 
     @Id
-    private Integer id;
-    private Integer petId;
-    private Integer usuarioId;
+    private Long id;
+    private Long petId;
+    private Long usuarioId;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataAdocao;
     private String informacoes;

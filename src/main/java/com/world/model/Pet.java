@@ -20,7 +20,7 @@ import java.util.Map;
 public class Pet {
 
     @Id
-    private Integer id;
+    private Long id;
     private String nome;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate idade;
@@ -32,14 +32,14 @@ public class Pet {
     private StatusAdocao status;
 
     @MappedCollection(idColumn = "pet_id", keyColumn = "usuario_id")
-    private Map<Long, UsuarioPet> usuariosPet;
+    private Map<Integer, UsuarioPet> usuariosPet;
 
     public void addUsuario(Long id){
-        usuariosPet = new HashMap<>();
+        usuariosPet = new HashMap<Integer, UsuarioPet>();
         UsuarioPet usuarioPet = new UsuarioPet();
         usuarioPet.setUsuarioId(id);
 
-        usuariosPet.put(id, usuarioPet);
+        usuariosPet.put(Math.toIntExact(id), usuarioPet);
 
 
     }

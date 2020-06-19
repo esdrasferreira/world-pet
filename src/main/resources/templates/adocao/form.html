@@ -16,7 +16,8 @@
 
         <ul class="nav justify-content-left">
             <li class="nav-item">
-                <a class="nav-link active" href="/pets/meus_pets">Meus_Pets</a>
+
+               <a class="nav-link active" href="/pets/meus_pets">Meus_Pets</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active" href="/pets">List_Pets</a>
@@ -34,90 +35,49 @@
         </ul>
 
     </nav>
-<div class="container">
+
     <form action="#" method="post" th:action="@{/adocao/salvar}" th:object="${pet}">
-        <input type="hidden" th:field="*{id}">
+        <input type="hidden" name="id" id="id" th:field="*{id}">
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Dono:</label>
+            <label class="col-md-auto col-form-label">
+                <h5 class="card-title">Usuário:</h5>
+            </label>
             <div class="col-auto">
                 <label>
-                    <select  class="custom-select" name="usuario_id">
+                    <select  class="custom-select" name="usuario_id" id="usuario_id">
 
-                            <option th:each="usuario: ${usuarios}" th:value="${usuario.id}" th:text="${usuario.nome}"></option>
+                            <option
+                                    th:each="usuario: ${usuarios}"
+                                    th:value="${usuario.id}" th:text="${usuario.nome}"
+                                    th:selected="${usuario.id == pet.id}"
+                            ></option>
 
                     </select>
                 </label>
             </div>
         </div>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Nome:</label>
-            <div class="col-auto">
-                <label>
-                    <input type="text" th:field="*{nome}">
-                </label>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label  class="col-sm-2 col-form-label">Idade:</label>
-            <div class="col-auto">
-                <label>
-                    <input type="date" th:field="*{idade}">
-                </label>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label  class="col-sm-2 col-form-label">Raça:</label>
-            <div class="col-auto">
-                <label>
-                    <input type="text" th:field="*{raca}">
-                </label>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Tipo:</label>
-            <div class="col-auto">
-                <label>
-                    <input type="text" class="form-control" th:field="*{tipo}">
-                </label>
-            </div>
-        </div>
-        <fieldset class="form-group">
-            <div class="container">
-                <div class="row">
-                    <div class="col-auto">
-                        <legend class="col-form-label col-sm-2 pt-0">Sexo:</legend>
-                    </div>
-                    <div class="col-auto">
-                        <label for="masculino"></label><input class="form-check-input" type="radio" th:field="*{sexo}" id="masculino" value="MASCULINO"> Masc
-                    </div>
-                    <div class="col-auto">
-                        <label for="feminino"></label><input class="form-check-input" type="radio" th:field="*{sexo}" id="feminino" value="FEMININO"> Fem
-                    </div>
-                </div>
-            </div>
-        </fieldset><fieldset class="form-group">
-        <div class="container">
-            <div class="row">
-                <div class="col-auto">
-                    <legend class="col-form-label col-sm-2 pt-0">Adoção:</legend>
-                </div>
-                <div class="col-auto">
-                  <input class="form-check-input" type="radio" th:field="*{status}"  value="DISPONIVEL"> Disponível
-                </div>
-                <div class="col-auto">
-                    <input class="form-check-input" type="radio" th:field="*{status}"  value="INDISPONIVEL"> Indisponível
-                </div>
-            </div>
-        </div>
-    </fieldset>
 
-        <div class="form-group row">
-            <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary">Salvar</button>
+        <div class="card" style="width: 18rem;">
+            <img src="http://localhost:8080/images/bull.jpeg" class="card-img-top" alt="">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <span th:text="*{nome}"></span>
+                </h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                   Tipo: <span th:text="*{tipo}"></span><br>
+                   Raça: <span th:text="*{raca}"></span><br>
+                   Idade: <span th:text="*{idade}"></span><br>
+                    Sexo: <span th:text="*{sexo}"></span><br>
+                    Id: <span th:text="*{id}"></span><br>
+
+                </h6>
+
+                <button type="submit" class="btn btn-primary">Adotar</button>
             </div>
         </div>
+
     </form>
-</div>
+
 
 
 
