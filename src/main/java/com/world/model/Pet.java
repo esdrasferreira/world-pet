@@ -31,6 +31,8 @@ public class Pet {
     @Enumerated(EnumType.STRING)
     private StatusAdocao status;
 
+
+
     @MappedCollection(idColumn = "pet_id", keyColumn = "usuario_id")
     private Map<Integer, UsuarioPet> usuariosPet;
 

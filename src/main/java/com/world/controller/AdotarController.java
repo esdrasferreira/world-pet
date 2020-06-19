@@ -51,19 +51,19 @@ public class AdotarController {
     @GetMapping("/cadastrar/{id}")
     public ModelAndView cadastrar(ModelAndView mv, @PathVariable Long id){
         Iterable<Usuario> usuarios = usuarioRepository.findAll();
-        mv.addObject("usuarios", usuarios);
+        mv.addObject("usuarios", usuarios); //envio todos os usuarios
 
 
+            UsuarioPet usuarioPet = (UsuarioPet) usuarioPetRepository.findByPetIdUserId(id);
+            mv.addObject("usuarioID", usuarioPet.getUsuarioId());//envio apenas id do usuario para selected
 
 
         Optional<Pet> pet = petRepository.findById(id);
 
-
-
         if(pet.get().getStatus() == StatusAdocao.INDISPONIVEL){
-            return new ModelAndView("redirect:/pets");
+            return new ModelAndView("redirect:/pets"); //se status indisponivel, não muda de pagina
         }else{
-            mv.addObject("pet", pet.get());
+            mv.addObject("pet", pet.get()); //se status disponivel vai para pagina adocao
             mv.setViewName("adocao/form");
             return mv;
         }

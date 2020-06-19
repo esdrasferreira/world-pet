@@ -23,7 +23,9 @@ public class PetController{
 
     @GetMapping
     public ModelAndView listar(ModelAndView mv){
-        Iterable<Pet> pets = petRepository.findAll();
+        Iterable<Pet> pets = petRepository.findAllPetsAndUsers();
+    System.out.println("imprimindo pets e users retorno::: "+pets);
+
         mv.addObject("pets",pets);
         mv.setViewName("pets/all");
         return mv;
@@ -32,7 +34,26 @@ public class PetController{
 
     @GetMapping("/meus_pets")
     public ModelAndView meusPets(ModelAndView mv){
+        Iterable<Usuario> usuarios = usuarioRepository.findAll();
+        mv.addObject("usuarios", usuarios);
+
         Iterable<Pet> pets = petRepository.findAll();
+
+        mv.addObject("pets",pets);
+        mv.setViewName("pets/list");
+        return mv;
+    }
+
+    @PostMapping("/meus_pets2")
+    public ModelAndView meusPets2(ModelAndView mv, @RequestParam(required = false, defaultValue = "1")Long usuario_id){
+        Iterable<Usuario> usuarios = usuarioRepository.findAll();
+        mv.addObject("usuarios", usuarios);
+
+        Iterable<Pet> pets = petRepository.findAllPetsAndUsersById(usuario_id);
+        mv.addObject("usuarioID", usuario_id);
+
+    System.out.println("imprimindo pets :::: "+ pets.toString());
+
         mv.addObject("pets",pets);
         mv.setViewName("pets/list");
         return mv;

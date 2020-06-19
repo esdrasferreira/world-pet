@@ -49,7 +49,7 @@
                             <option
                                     th:each="usuario: ${usuarios}"
                                     th:value="${usuario.id}" th:text="${usuario.nome}"
-                                    th:selected="${usuario.id == pet.id}"
+                                    th:selected="${usuario.id == usuarioID}"
                             ></option>
 
                     </select>

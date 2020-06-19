@@ -61,7 +61,7 @@
                 <th th:text="${pet.sexo}"></th>
                 <th th:text="${pet.tipo}"></th>
                 <th th:text="${pet.status}"></th>
-                <th >dono</th>
+                <th th:text="${pet.nome}"></th>
                 <td><a th:href="@{ /pets/detalhes/{id} (id=${{pet.id}}) }" th:text="Detalhes"></a></td>
                 <td><a class="btn btn-outline-primary" role="button" th:href="@{/adocao/cadastrar/{id} (id=${{pet.id}}) }" th:text="Adotar">Link</a></td>
             </tr>
