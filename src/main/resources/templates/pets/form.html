@@ -36,14 +36,14 @@
     </nav>
 <div class="container">
     <form action="#" method="post" th:action="@{/pets/salvar}" th:object="${pet}">
-        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{petId}">
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Dono:</label>
             <div class="col-auto">
                 <label>
                     <select  class="custom-select" name="usuario_id">
 
-                            <option th:each="usuario: ${usuarios}" th:value="${usuario.id}" th:text="${usuario.nome}"></option>
+                            <option th:each="usuario: ${usuarios}" th:value="${usuario.usuarioId}" th:text="${usuario.nome}"></option>
 
                     </select>
                 </label>
@@ -102,7 +102,7 @@
                     <legend class="col-form-label col-sm-2 pt-0">Adoção:</legend>
                 </div>
                 <div class="col-auto">
-                  <input class="form-check-input" type="radio" th:field="*{status}"  value="DISPONIVEL"> Disponível
+                  <input class="form-check-input" type="radio" th:field="*{status}" id="disponivel" value="DISPONIVEL"> Disponível
                 </div>
                 <div class="col-auto">
                     <input class="form-check-input" type="radio" th:field="*{status}"  value="INDISPONIVEL"> Indisponível
@@ -122,6 +122,10 @@
 
 
 <!-- Optional JavaScript -->
+<script>
+	document.getElementById("masculino").setAttribute("checked","checked")
+	document.getElementById("disponivel").setAttribute("checked","checked")
+</script>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -5,12 +5,12 @@
 DROP TABLE IF EXISTS  usuario;
 
 CREATE TABLE usuario(
-                         `id` INT NOT NULL AUTO_INCREMENT,
+                         `usuario_id` INT NOT NULL AUTO_INCREMENT,
                          `nome` VARCHAR(45) not null ,
                          `idade` date not null ,
                          `sexo` enum('masculino', 'feminino', 'duvida'),
                          `endereco` VARCHAR(45) not null ,
-                         PRIMARY KEY (`id`)
+                         PRIMARY KEY (`usuario_id`)
 )
 
 -- rollback DROP TABLE usuario;

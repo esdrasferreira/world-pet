@@ -1,7 +1,9 @@
 package com.world.controller;
 
 import com.world.model.Pet;
+import com.world.model.PetDono;
 import com.world.model.Usuario;
+import com.world.repository.PetDonoRepository;
 import com.world.repository.PetRepository;
 import com.world.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,9 @@ import java.util.Optional;
 public class PetController{
 
     @Autowired
+    private PetDonoRepository petDonoRepository;
+
+    @Autowired
     private PetRepository petRepository;
 
     @Autowired
@@ -24,8 +29,9 @@ public class PetController{
     @GetMapping
     public ModelAndView listar(ModelAndView mv){
         Iterable<Pet> pets = petRepository.findAll();
-    System.out.println("imprimindo pets e users retorno::: "+pets);
 
+        Iterable<PetDono> petDonoIterable = petDonoRepository.findAllPetDono();
+    System.out.println(" imprimindo petDono : "+ petDonoIterable.toString());
 
         mv.addObject("pets",pets);
         mv.setViewName("pets/all");
@@ -96,7 +102,7 @@ public class PetController{
     @GetMapping("excluir/{id}")
     public ModelAndView excluir(ModelAndView mv, @PathVariable Long id){
     Pet pet = new Pet();
-    pet.setId(id);
+    pet.setPetId(id);
     petRepository.delete(pet);
 
         return new ModelAndView("redirect:/pets");

@@ -27,14 +27,14 @@ USE `pet_world` ;
 -- Table `pet_world`.`pet`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `pet_world`.`pet` (
-                                                 `id` INT NOT NULL AUTO_INCREMENT,
+                                                 `pet_id` INT NOT NULL AUTO_INCREMENT,
                                                  `nome` VARCHAR(45) not null ,
                                                  `idade` DATE not null ,
                                                  `raca` VARCHAR(45) not null ,
                                                  `sexo` VARCHAR(45) not null ,
                                                  `tipo` VARCHAR(45) not null ,
                                                  `status` VARCHAR(45) NOT NULL,
-                                                 PRIMARY KEY (`id`))
+                                                 PRIMARY KEY (`pet_id`))
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = ascii;
 
@@ -43,11 +43,11 @@ CREATE TABLE IF NOT EXISTS `pet_world`.`pet` (
 -- Table `pet_world`.`usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `pet_world`.`usuario` (
-                                                     `id` INT NOT NULL AUTO_INCREMENT,
+                                                     `usuario_id` INT NOT NULL AUTO_INCREMENT,
                                                      `nome` VARCHAR(45) not null ,
                                                      `idade` DATE not null ,
                                                      `sexo` VARCHAR(45) not null ,
-                                                     PRIMARY KEY (`id`))
+                                                     PRIMARY KEY (`usuario_id`))
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = ascii;
 
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `pet_world`.`usuario` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `pet_world`.`endereco`
 (
-                                                    `id` INT NOT NULL AUTO_INCREMENT,
+                                                    `endereco_id` INT NOT NULL AUTO_INCREMENT,
                                                     `cep` VARCHAR(45) NULL DEFAULT NULL,
                                                      `logradouro` VARCHAR(255) NULL DEFAULT NULL,
                                                      `numero` VARCHAR(45) NULL DEFAULT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `pet_world`.`endereco`
                                                      `bairro` VARCHAR(45) NULL DEFAULT NULL,
                                                      `cidade` VARCHAR(45) NULL DEFAULT NULL,
                                                      `estado` VARCHAR(45) NULL DEFAULT NULL,
-                                                        PRIMARY KEY (`id`))
+                                                        PRIMARY KEY (`endereco_id`))
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = ascii;
 -- -----------------------------------------------------

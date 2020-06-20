@@ -56,7 +56,7 @@ public class AdotarController {
 
         Usuario usuario = usuarioRepository.findUserByPetId(id);
         mv.addObject("nome_dono", usuario.getNome());//envio apenas nome_dono
-        mv.addObject("usuarioID", usuario.getId());//envio apenas id do usuario para selected
+        mv.addObject("usuarioID", usuario.getUsuarioId());//envio apenas id do usuario para selected
         Optional<Pet> pet = petRepository.findById(id);
 
         if(pet.get().getStatus() == StatusAdocao.INDISPONIVEL){
@@ -72,25 +72,15 @@ public class AdotarController {
     public ModelAndView salvar(@RequestParam Long usuario_id, Long antigo_dono_id , Pet pet){
 
         Adocao adocao = new Adocao();
-        adocao.setPetId(pet.getId());
+        adocao.setPetId(pet.getPetId());
         adocao.setUsuarioId(usuario_id);
         adocao.setAntigoUsuarioId(antigo_dono_id);
         adocao.setDataAdocao(LocalDate.now());
         adotarRepository.save(adocao);
 
         pet.addUsuario(usuario_id);
-
-        petRepository.save(pet);
-
-//        UsuarioPet usuarioPet = new UsuarioPet();
-//        usuarioPet.setUsuarioId(usuario_id);
-//        usuarioPet.setPetId(pet.getId());
-//        usuarioPetRepository.save(usuarioPet);
-
-//        Optional<Pet> petOptional = petRepository.findById(id);
-//        Pet pet = petOptional.get();
 //        pet.setStatus(StatusAdocao.INDISPONIVEL);
-//        petRepository.save(pet);
+        petRepository.save(pet);
 
         return new ModelAndView("redirect:/pets");
     }

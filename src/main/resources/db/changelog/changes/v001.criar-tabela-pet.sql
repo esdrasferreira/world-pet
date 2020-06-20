@@ -5,7 +5,7 @@
 DROP TABLE IF EXISTS pet;
 
 create table pet(
-                     id bigint not null primary key auto_increment,
+                     pet_id bigint not null primary key auto_increment,
                      nome varchar(50) not null ,
                      idade date not null ,
                      raca varchar (50) not null ,

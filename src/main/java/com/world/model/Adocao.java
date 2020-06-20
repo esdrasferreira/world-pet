@@ -16,7 +16,7 @@ import java.time.LocalDate;
 public class Adocao {
 
     @Id
-    private Long id;
+    private Long adocaoId;
     private Long petId;
     private Long usuarioId;
     private Long antigoUsuarioId;

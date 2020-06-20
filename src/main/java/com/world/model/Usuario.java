@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class Usuario {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long usuarioId;
     private String nome;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate idade;

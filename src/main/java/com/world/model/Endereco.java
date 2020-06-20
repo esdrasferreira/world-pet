@@ -12,7 +12,7 @@ public class Endereco{
 
 
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
+        private Integer enderecoId;
         private String cep;
         private String logradouro;
         private String numero;
