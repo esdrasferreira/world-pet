@@ -19,6 +19,7 @@ public class Adocao {
     private Long id;
     private Long petId;
     private Long usuarioId;
+    private Long antigoUsuarioId;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataAdocao;
     private String informacoes;

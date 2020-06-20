@@ -6,9 +6,9 @@ DROP TABLE IF EXISTS pet;
 
 create table pet(
                      id bigint not null primary key auto_increment,
-                     nome varchar(50),
-                     idade date,
-                     raca varchar (50),
+                     nome varchar(50) not null ,
+                     idade date not null ,
+                     raca varchar (50) not null ,
                      sexo enum('masculino', 'feminino'),
                      tipo varchar (100) not null
 

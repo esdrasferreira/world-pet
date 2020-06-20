@@ -28,11 +28,11 @@ USE `pet_world` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `pet_world`.`pet` (
                                                  `id` INT NOT NULL AUTO_INCREMENT,
-                                                 `nome` VARCHAR(45) NULL DEFAULT NULL,
-                                                 `idade` DATE NULL DEFAULT NULL,
-                                                 `raca` VARCHAR(45) NULL DEFAULT NULL,
-                                                 `sexo` VARCHAR(45) NULL DEFAULT NULL,
-                                                 `tipo` VARCHAR(45) NULL DEFAULT NULL,
+                                                 `nome` VARCHAR(45) not null ,
+                                                 `idade` DATE not null ,
+                                                 `raca` VARCHAR(45) not null ,
+                                                 `sexo` VARCHAR(45) not null ,
+                                                 `tipo` VARCHAR(45) not null ,
                                                  `status` VARCHAR(45) NOT NULL,
                                                  PRIMARY KEY (`id`))
     ENGINE = InnoDB
@@ -44,9 +44,9 @@ CREATE TABLE IF NOT EXISTS `pet_world`.`pet` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `pet_world`.`usuario` (
                                                      `id` INT NOT NULL AUTO_INCREMENT,
-                                                     `nome` VARCHAR(45) NULL DEFAULT NULL,
-                                                     `idade` DATE NULL DEFAULT NULL,
-                                                     `sexo` VARCHAR(45) NULL DEFAULT NULL,
+                                                     `nome` VARCHAR(45) not null ,
+                                                     `idade` DATE not null ,
+                                                     `sexo` VARCHAR(45) not null ,
                                                      PRIMARY KEY (`id`))
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = ascii;

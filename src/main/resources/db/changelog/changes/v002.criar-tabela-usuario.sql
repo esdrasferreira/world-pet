@@ -6,10 +6,10 @@ DROP TABLE IF EXISTS  usuario;
 
 CREATE TABLE usuario(
                          `id` INT NOT NULL AUTO_INCREMENT,
-                         `nome` VARCHAR(45) NULL,
-                         `idade` date,
+                         `nome` VARCHAR(45) not null ,
+                         `idade` date not null ,
                          `sexo` enum('masculino', 'feminino', 'duvida'),
-                         `endereco` VARCHAR(45) NULL,
+                         `endereco` VARCHAR(45) not null ,
                          PRIMARY KEY (`id`)
 )
 

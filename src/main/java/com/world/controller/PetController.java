@@ -23,8 +23,9 @@ public class PetController{
 
     @GetMapping
     public ModelAndView listar(ModelAndView mv){
-        Iterable<Pet> pets = petRepository.findAllPetsAndUsers();
+        Iterable<Pet> pets = petRepository.findAll();
     System.out.println("imprimindo pets e users retorno::: "+pets);
+
 
         mv.addObject("pets",pets);
         mv.setViewName("pets/all");
