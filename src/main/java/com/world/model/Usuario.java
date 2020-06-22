@@ -15,7 +15,7 @@ public class Usuario {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long usuarioId;
-    private String nome;
+    private String nomeUsuario;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate idade;
     @Enumerated(EnumType.STRING)

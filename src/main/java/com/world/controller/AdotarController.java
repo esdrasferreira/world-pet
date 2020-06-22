@@ -1,9 +1,11 @@
 package com.world.controller;
 
-import com.world.model.*;
+import com.world.model.Adocao;
+import com.world.model.Pet;
+import com.world.model.StatusAdocao;
+import com.world.model.Usuario;
 import com.world.repository.AdotarRepository;
 import com.world.repository.PetRepository;
-import com.world.repository.UsuarioPetRepository;
 import com.world.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,8 +28,7 @@ public class AdotarController {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    @Autowired
-    private UsuarioPetRepository usuarioPetRepository;
+
 
 //    @GetMapping
 //    public ModelAndView listar(ModelAndView mv){
@@ -55,7 +56,7 @@ public class AdotarController {
 
 
         Usuario usuario = usuarioRepository.findUserByPetId(id);
-        mv.addObject("nome_dono", usuario.getNome());//envio apenas nome_dono
+        mv.addObject("nome_dono", usuario.getNomeUsuario());//envio apenas nome_dono
         mv.addObject("usuarioID", usuario.getUsuarioId());//envio apenas id do usuario para selected
         Optional<Pet> pet = petRepository.findById(id);
 
@@ -71,12 +72,16 @@ public class AdotarController {
     @PostMapping("/salvar")
     public ModelAndView salvar(@RequestParam Long usuario_id, Long antigo_dono_id , Pet pet){
 
+        Optional<Pet> petOptional = petRepository.findById(pet.getPetId());
+
         Adocao adocao = new Adocao();
         adocao.setPetId(pet.getPetId());
         adocao.setUsuarioId(usuario_id);
         adocao.setAntigoUsuarioId(antigo_dono_id);
         adocao.setDataAdocao(LocalDate.now());
         adotarRepository.save(adocao);
+
+        pet = petOptional.get();
 
         pet.addUsuario(usuario_id);
 //        pet.setStatus(StatusAdocao.INDISPONIVEL);

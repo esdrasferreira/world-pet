@@ -28,7 +28,7 @@ USE `pet_world` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `pet_world`.`pet` (
                                                  `pet_id` INT NOT NULL AUTO_INCREMENT,
-                                                 `nome` VARCHAR(45) not null ,
+                                                 `nome_pet` VARCHAR(45) not null ,
                                                  `idade` DATE not null ,
                                                  `raca` VARCHAR(45) not null ,
                                                  `sexo` VARCHAR(45) not null ,
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `pet_world`.`pet` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `pet_world`.`usuario` (
                                                      `usuario_id` INT NOT NULL AUTO_INCREMENT,
-                                                     `nome` VARCHAR(45) not null ,
+                                                     `nome_usuario` VARCHAR(45) not null ,
                                                      `idade` DATE not null ,
                                                      `sexo` VARCHAR(45) not null ,
                                                      PRIMARY KEY (`usuario_id`))

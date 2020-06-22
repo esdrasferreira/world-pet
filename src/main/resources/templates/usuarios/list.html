@@ -51,7 +51,7 @@
         <form method="get" action="/usuarios/editar/${usuario.id}">
              <tr th:each="usuario: ${usuarios}">
                 <th th:text="${usuario.usuarioId}"></th>
-                <th th:text="${usuario.nome}"></th>
+                <th th:text="${usuario.nomeUsuario}"></th>
                 <th th:text="${usuario.idade}"></th>
                 <th th:text="${usuario.sexo}"></th>
                 <th># ?? #</th>

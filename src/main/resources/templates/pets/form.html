@@ -43,7 +43,7 @@
                 <label>
                     <select  class="custom-select" name="usuario_id">
 
-                            <option th:each="usuario: ${usuarios}" th:value="${usuario.usuarioId}" th:text="${usuario.nome}"></option>
+                            <option th:each="usuario: ${usuarios}" th:value="${usuario.usuarioId}" th:text="${usuario.nomeUsuario}"></option>
 
                     </select>
                 </label>
@@ -53,7 +53,7 @@
             <label class="col-sm-2 col-form-label">Nome:</label>
             <div class="col-auto">
                 <label>
-                    <input type="text" th:field="*{nome}">
+                    <input type="text" th:field="*{nomePet}">
                 </label>
             </div>
         </div>

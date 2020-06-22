@@ -1,9 +1,7 @@
 package com.world.controller;
 
 import com.world.model.Pet;
-import com.world.model.PetDono;
 import com.world.model.Usuario;
-import com.world.repository.PetDonoRepository;
 import com.world.repository.PetRepository;
 import com.world.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +15,6 @@ import java.util.Optional;
 @RequestMapping("/pets")
 public class PetController{
 
-    @Autowired
-    private PetDonoRepository petDonoRepository;
 
     @Autowired
     private PetRepository petRepository;
@@ -28,10 +24,9 @@ public class PetController{
 
     @GetMapping
     public ModelAndView listar(ModelAndView mv){
-        Iterable<Pet> pets = petRepository.findAll();
+        Iterable<Pet> pets = petRepository.findAllPetsAndUsers();
 
-        Iterable<PetDono> petDonoIterable = petDonoRepository.findAllPetDono();
-    System.out.println(" imprimindo petDono : "+ petDonoIterable.toString());
+        System.out.println("imprimindo pets :::: "+ pets.toString());
 
         mv.addObject("pets",pets);
         mv.setViewName("pets/all");
@@ -46,6 +41,12 @@ public class PetController{
 
         Iterable<Pet> pets = petRepository.findAll();
 
+        Iterable<Pet> petIterable = petRepository.findAllPetsAndUsers();
+
+
+
+
+
         mv.addObject("pets",pets);
         mv.setViewName("pets/list");
         return mv;
@@ -59,7 +60,7 @@ public class PetController{
         Iterable<Pet> pets = petRepository.findAllPetsAndUsersById(usuario_id);
         mv.addObject("usuarioID", usuario_id);
 
-    System.out.println("imprimindo pets :::: "+ pets.toString());
+
 
         mv.addObject("pets",pets);
         mv.setViewName("pets/list");

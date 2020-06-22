@@ -38,12 +38,6 @@
 
     <form action="#" method="post" th:action="@{/adocao/salvar}" th:object="${pet}">
         <input type="hidden" name="id" id="id" th:field="*{petId}">
-        <input type="hidden" th:name="nome" th:id="nome" th:field="*{nome}">
-        <input type="hidden" th:name="tipo" th:id="tipo" th:field="*{tipo}">
-        <input type="hidden" th:name="raca" th:id="raca" th:field="*{raca}">
-        <input type="hidden" th:name="idade" th:id="idade" th:field="*{idade}">
-        <input type="hidden" th:name="sexo" th:id="sexo" th:field="*{sexo}">
-        <input type="hidden" th:name="status" th:id="status" th:field="*{status}">
 
         <input type="hidden" name="antigo_dono_id" id="antigo_dono_id" th:value="${usuarioID}">
         <div class="form-group row">
@@ -56,7 +50,7 @@
 
                             <option
                                     th:each="usuario: ${usuarios}"
-                                    th:value="${usuario.usuarioId}" th:text="${usuario.nome}"
+                                    th:value="${usuario.usuarioId}" th:text="${usuario.nomeUsuario}"
 
                             ></option>
 
@@ -69,7 +63,7 @@
             <img src="http://localhost:8080/images/bull.jpeg" class="card-img-top" alt="">
             <div class="card-body">
                 <h5 class="card-title">
-                    <span th:text="*{nome}"></span>
+                    <span th:text="*{nomePet}"></span>
                 </h5>
                 <h6 class="card-subtitle mb-2 text-muted">
                    Tipo: <span th:text="*{tipo}"></span><br>
