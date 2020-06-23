@@ -48,7 +48,7 @@
     </thead>
     <tbody>
         <form method="get" action="/pets/editar/${pet.id}">
-            <tr th:each="pet: ${pets}">
+            <tr  th:each="pet: ${pets}">
                 <th th:text="${pet.petId}"></th>
                 <th th:text="${pet.nomePet}"></th>
                 <th th:text="${pet.idade}"></th>
@@ -56,9 +56,8 @@
                 <th th:text="${pet.sexo}"></th>
                 <th th:text="${pet.tipo}"></th>
                 <th th:text="${pet.status}"></th>
-                <ul th:each="entry, stats: ${pet.usuarioMap}" th:with="Usuario=${entry.value}">
-                <th th:text="${Usuario.nomeUsuario}"></th>
-                </ul>
+                <th th:text="${pet.nomeUsuario}"></th>
+
                 <td><a th:href="@{ /pets/detalhes/{id} (id=${{pet.petId}}) }" th:text="Detalhes"></a></td>
                 <td><a class="btn btn-outline-primary" role="button" th:href="@{/adocao/cadastrar/{id} (id=${{pet.petId}}) }" th:text="Adotar">Link</a></td>
             </tr>
