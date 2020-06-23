@@ -84,7 +84,7 @@ public class AdotarController {
         pet = petOptional.get();
 
         pet.addUsuario(usuario_id);
-//        pet.setStatus(StatusAdocao.INDISPONIVEL);
+        pet.setStatus(StatusAdocao.INDISPONIVEL);
         petRepository.save(pet);
 
         return new ModelAndView("redirect:/pets");
