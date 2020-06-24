@@ -28,7 +28,7 @@ public class PetController{
 
     @GetMapping
     public ModelAndView listar(ModelAndView mv){
-//        Iterable<Pet> pets = petRepository.findAllPetsAndUsers();
+
 
         Iterable<PetDTO> petDTOIterable = petDTORepository.findAllPetsAndUsers();
 
@@ -45,15 +45,13 @@ public class PetController{
         Iterable<Usuario> usuarios = usuarioRepository.findAll();
         mv.addObject("usuarios", usuarios);
 
-        Iterable<Pet> pets = petRepository.findAll();
-
-        Iterable<Pet> petIterable = petRepository.findAllPetsAndUsers();
+        Iterable<PetDTO> petDTOIterable = petDTORepository.findAllPetsAndUsers();
 
 
 
 
 
-        mv.addObject("pets",pets);
+        mv.addObject("pets",petDTOIterable);
         mv.setViewName("pets/list");
         return mv;
     }
@@ -63,12 +61,12 @@ public class PetController{
         Iterable<Usuario> usuarios = usuarioRepository.findAll();
         mv.addObject("usuarios", usuarios);
 
-        Iterable<Pet> pets = petRepository.findAllPetsAndUsersById(usuario_id);
+
         mv.addObject("usuarioID", usuario_id);
 
 
-
-        mv.addObject("pets",pets);
+        Iterable<PetDTO> petDTOIterable = petDTORepository.findAllPetsAndUsersById(usuario_id);
+        mv.addObject("pets",petDTOIterable);
         mv.setViewName("pets/list");
         return mv;
     }
@@ -92,8 +90,11 @@ public class PetController{
 
         mv.addObject("pet",pet.get());
 
-        Iterable<Usuario> usuarios = usuarioRepository.findAll();
-        mv.addObject("usuarios", usuarios);
+       Usuario usuarioId = usuarioRepository.findUserByPetId(id);
+        mv.addObject("usuarioId", usuarioId.getUsuarioId());
+
+        Iterable<Usuario> usuarioIterable = usuarioRepository.findAll();
+        mv.addObject("usuarios", usuarioIterable);
 
         mv.setViewName("pets/form");
         return mv;
@@ -103,7 +104,7 @@ public class PetController{
     public ModelAndView salvar(@RequestParam Long usuario_id, Pet pet){
         pet.addUsuario(usuario_id);
         petRepository.save(pet);
-        return new ModelAndView("redirect:/pets");
+        return new ModelAndView("redirect:/pets/meus_pets");
     }
 
     @GetMapping("excluir/{id}")

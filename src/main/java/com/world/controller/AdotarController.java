@@ -6,6 +6,7 @@ import com.world.model.StatusAdocao;
 import com.world.model.Usuario;
 import com.world.repository.AdotarRepository;
 import com.world.repository.PetRepository;
+import com.world.repository.UsuarioPetRepository;
 import com.world.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,9 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/adocao")
 public class AdotarController {
+
+    @Autowired
+    private UsuarioPetRepository usuarioPetRepository;
 
     @Autowired
     private AdotarRepository adotarRepository;
@@ -81,11 +85,10 @@ public class AdotarController {
         adocao.setDataAdocao(LocalDate.now());
         adotarRepository.save(adocao);
 
-        pet = petOptional.get();
+        usuarioPetRepository.updateStatus(usuario_id,pet.getPetId());
 
-        pet.addUsuario(usuario_id);
         pet.setStatus(StatusAdocao.INDISPONIVEL);
-        petRepository.save(pet);
+       petRepository.updateStatus(pet.getStatus(), pet.getPetId());
 
         return new ModelAndView("redirect:/pets");
     }

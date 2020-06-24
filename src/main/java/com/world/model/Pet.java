@@ -36,8 +36,7 @@ public class Pet {
     @MappedCollection(idColumn = "pet_id", keyColumn = "usuario_id")
     private Map<Integer, UsuarioPet> usuariosPet;
 
-    @MappedCollection(idColumn = "usuario_id", keyColumn = "usuario_id")
-    private Map<Integer, Usuario> usuarioMap;
+
 
     public void addUsuario(Long id){
         usuariosPet = new HashMap<Integer, UsuarioPet>();

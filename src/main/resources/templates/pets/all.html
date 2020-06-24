@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:nl2br="https://github.com/bufferings/thymeleaf-extras-nl2br">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+
+
 
     <title>Pet world!</title>
 </head>
@@ -48,15 +55,16 @@
     </thead>
     <tbody>
         <form method="get" action="/pets/editar/${pet.id}">
-            <tr  th:each="pet: ${pets}">
-                <th th:text="${pet.petId}"></th>
-                <th th:text="${pet.nomePet}"></th>
-                <th th:text="${pet.idade}"></th>
-                <th th:text="${pet.raca}"></th>
-                <th th:text="${pet.sexo}"></th>
-                <th th:text="${pet.tipo}"></th>
-                <th th:text="${pet.status}"></th>
-                <th th:text="${pet.nomeUsuario}"></th>
+            <tr  th:each="pet,status: ${pets}">
+                <td th:text="${pet.petId}"></td>
+                <td th:text="${pet.nomePet}"></td>
+                <td th:text="${pet.idade}"></td>
+                <td th:text="${pet.raca}"></td>
+                <td th:text="${pet.sexo}"></td>
+                <td th:text="${pet.tipo}"></td>
+
+                 <td th:text="${pet.status}"></td>
+                <td th:text="${pet.nomeUsuario}"></td>
 
                 <td><a th:href="@{ /pets/detalhes/{id} (id=${{pet.petId}}) }" th:text="Detalhes"></a></td>
                 <td><a class="btn btn-outline-primary" role="button" th:href="@{/adocao/cadastrar/{id} (id=${{pet.petId}}) }" th:text="Adotar">Link</a></td>
